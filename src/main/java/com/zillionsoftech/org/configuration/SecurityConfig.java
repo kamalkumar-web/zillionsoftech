@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	      .csrf().disable()
 	      .httpBasic().and()
 	      .authorizeRequests()
-		  .antMatchers("/webjars/**").permitAll()
+		  .antMatchers("/webjars/**","/resources/**").permitAll()
 //	      .antMatchers("/admin/**").hasRole("ADMIN") // todo
 	      .antMatchers("/anonymous*").anonymous()
 	      .antMatchers("/login*","/signup").permitAll()
@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	      .logout()
 	      .logoutUrl("/perform_logout")
 	      .logoutSuccessUrl("/login?logout=true")
-	      .deleteCookies("JSESSIONID");
+	      .deleteCookies("JSESSIONID").and().oauth2Login().loginPage("/login").defaultSuccessUrl("/");
 //	      .logoutSuccessHandler(logoutSuccessHandler());
 	}
 	

@@ -2,12 +2,19 @@
  * 
  */
 package com.zillionsoftech.org.controller;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zillionsoftech.org.entities.Roles;
 import com.zillionsoftech.org.entities.Users;
 import com.zillionsoftech.org.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,6 +61,12 @@ public class AuthenticationController {
 		user.setRoles(roles);
 		log.info("Going to sign up with username "+ user.getUserId());
 		return usersService.signUp(user);		
+	}
+
+	@GetMapping("/")
+	@ResponseBody
+	public OAuth2User user(@AuthenticationPrincipal OAuth2User principal) throws JsonProcessingException {
+		return principal;
 	}
 	
 	

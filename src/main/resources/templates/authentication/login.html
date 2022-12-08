@@ -3,8 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:500" />
+<!--    <link rel="stylesheet" type="text/css" href="login.scss">-->
+
+    <style>
+
+        .google-btn {
+          width: 184px;
+          height: 42px;
+          background-color: #4285f4;
+          border-radius: 2px;
+          box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+
+          &:hover {
+            box-shadow: 0 0 6px #4285f4;
+          }
+          &:active {
+            background: #1669F2;
+          }
+
+        }
+        .google-icon-wrapper {
+            position: absolute;
+            margin-top: 1px;
+            margin-left: 1px;
+            width: 40px;
+            height: 40px;
+            border-radius: 2px;
+            background-color: #fff;
+          }
+          .google-icon {
+            position: absolute;
+            margin-top: 11px;
+            margin-left: 11px;
+            width: 18px;
+            height: 18px;
+          }
+          .btn-text {
+            float: right;
+            margin: 11px 11px 0 0;
+            color: $white;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            font-family: "Roboto";
+          }
+
+
+
+    </style>
 </head>
 <body>
+<div class="container-fluid d-flex justify-content-center align-items-center container">
+    <form class="row g-3">
+        <div class="col-12">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Sign in with email">
+        </div>
+        <div class="col-12">
+            <div class="google-btn">
+                <div class="google-icon-wrapper">
+                    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                </div>
+                <p class="btn-text"><b>Sign in with google</b></p>
+            </div>
+
+        </div>
+    </form>
+</div>
 
 </body>
+<script src="/webjars/jquery/3.6.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+
+<script>
+    $('.btn-text').click(()=>{
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = '/oauth2/authorization/google';
+        a.click();
+    });
+
+</script>
 </html>
