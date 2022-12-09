@@ -7,8 +7,4 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class CommonController {
 
-    @GetMapping("/")
-    public  String welcome() {
-        return "index";
-    }
 }
